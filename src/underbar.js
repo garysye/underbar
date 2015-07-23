@@ -208,7 +208,12 @@
       if (!everyTrue) {
         return false;
       }
-      return iterator(item);
+      if (iterator !== undefined) {
+        return Boolean(iterator(item));
+      }
+      else {
+        return Boolean(item);
+      }
     }, true)
   };
 
