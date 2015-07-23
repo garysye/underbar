@@ -7,6 +7,7 @@
   // seem very useful, but remember it--if a function needs to provide an
   // iterator when the user does not pass one in, this will be handy.
   _.identity = function(val) {
+    return val;
   };
 
   /**
@@ -341,6 +342,14 @@
   // input array. For a tip on how to make a copy of an array, see:
   // http://mdn.io/Array.prototype.slice
   _.shuffle = function(array) {
+    var copy = Array.prototype.slice(array);
+    var index;
+    for (var i = 0; i < array.length; i++) {
+      index = Math.floor(Math.random()*array.length);
+      copy[i] = array[index];
+      copy[index] = array[i];
+    }
+    return copy;
   };
 
 
