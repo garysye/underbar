@@ -98,6 +98,13 @@
 
   // Produce a duplicate-free version of the array.
   _.uniq = function(array) {
+    var copy = [];
+    for (var i = 0; i < array.length; i++) {
+      var value = array[i];
+      if (_.indexOf(copy, value) === -1)
+      copy.push(value);
+    }
+    return copy;
   };
 
 
