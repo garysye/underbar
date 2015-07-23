@@ -208,12 +208,10 @@
       if (!everyTrue) {
         return false;
       }
-      if (iterator !== undefined) {
-        return Boolean(iterator(item));
+      if (iterator === undefined) {
+        iterator = _.identity;
       }
-      else {
-        return Boolean(item);
-      }
+      return Boolean(iterator(item));
     }, true)
   };
 
@@ -221,6 +219,12 @@
   // provided, provide a default one
   _.some = function(collection, iterator) {
     // TIP: There's a very clever way to re-use every() here.
+    for (var i = 0; i < collection.length; i++) {
+      if (_.every([collection[i]], iterator)) {
+        return true;
+      };
+    }
+    return false;
   };
 
 
